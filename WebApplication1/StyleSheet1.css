@@ -1,0 +1,38 @@
+﻿body 
+{
+    background-color:#7ADFBB;
+    margin-left:15%;
+    color:#503D42;
+}
+div 
+{
+    margin-top:10%;
+}
+p
+{
+    
+    margin-left:20%;
+    margin-right:30%;
+    background-color:#84C318;
+    border-style:solid;
+    border-color:#4C8577;
+}
+table
+{
+    background-color:#5DFF00;
+    border-style:dashed;
+    border-color:#4C8577;
+    font-weight:200;
+}
+
+td
+{
+    
+    background-color:#5DFF00;
+    border-style:dotted;
+    border-color:#4C8577;
+}
+a
+{
+    font-weight:200;
+}

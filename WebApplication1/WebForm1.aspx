@@ -6,27 +6,43 @@
 <head runat="server">
     <title>
     </title>
-    <script>
-        function func() {
-            if (signup["password"] != signup["password2"]) {
-                alert("the passwords do not match");
-                return false;
-            }
-            else
-            return true;
-        }
-    </script>
+    <link rel="Stylesheet" href="StyleSheet1.css" type="text/css" />
 </head>
-<body>
-    <form id="signup" runat="server" onsubmit="func();">
+<body class="StyleSheet1.css">
     <div>
-        username <input type="text" name="username" /><br />
-        password <input type="text" name="password" /><br />
-        re-type password <input type="text" name="password2" /><br />
-        city <input type="text" name="city" /><br />
-        age <input type="number" name="age" /><br />
-        status <input type="text" name="status" /><br />
-        <input type="submit" name ="submit" /><br />
+    <h1>Impress Me</h1>
+    <table width="100%" align="center">
+    <tr>
+        <td><a href="WebForm1.aspx">signup</a></td>
+        <td><a href="login.aspx">login</a></td>
+        <td><a href="home page.aspx">home page</a></td>
+        <td><a href="profile.aspx">profile</a></td>
+    </tr>
+    </table>
+    </div>
+    <form id="signup" runat="server">
+    <div>
+        <p>
+            username <input type="text" name="username" />
+        </p>
+        <p>
+            password <input type="text" name="password" />
+        </p>
+        <p>
+            re-type password <input type="text" name="password2" />
+        </p>
+        <p>
+            city <input type="text" name="city" />
+        </p>
+        <p>
+            age <input type="number" name="age" />
+        </p>
+        <p>
+            status <input type="text" name="status" />
+        </p>
+        <p>
+            <input type="submit" name ="submit" />
+        </p>
     </div>
     </form>
 </body>
