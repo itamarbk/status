@@ -4,8 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>
+    <title>Impress Me Signup
     </title>
+    <script type="text/javascript">
+        function func() {
+            var ps1 = document.getElementById("password").value;
+            var ps2 = document.getElementById("password2").value;
+            if (ps1 != ps2) {
+                alert("the passwords do not match");
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
     <link rel="Stylesheet" href="StyleSheet1.css" type="text/css" />
 </head>
 <body class="StyleSheet1.css">
@@ -20,16 +32,17 @@
     </tr>
     </table>
     </div>
-    <form id="signup" runat="server">
+    <form id="signup" runat="server" onsubmit="return func();">
     <div>
+    <p><%=message %></p>
         <p>
             username <input type="text" name="username" />
         </p>
         <p>
-            password <input type="text" name="password" />
+            password <input type="text" name="password" id="password" />
         </p>
         <p>
-            re-type password <input type="text" name="password2" />
+            re-type password <input type="text" name="password2" id="password2" />
         </p>
         <p>
             city <input type="text" name="city" />

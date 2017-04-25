@@ -15,40 +15,41 @@ namespace WebApplication1
     }
     public partial class WebForm1 : System.Web.UI.Page
     {
+        public string message = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request["onsubmit"] == null)
+            if (Request["submit"] != null)
             {
-                if (Request["submit"] != null)
+                SqlConnection conn = new SqlConnection(HELPER.connstring);
+                conn.Open();
+                try 
                 {
-                    SqlConnection conn = new SqlConnection(HELPER.connstring);
-                    conn.Open();
-                    SqlCommand cmd = conn.CreateCommand();
-                    //cmd.CommandText = "SELECT username FROM users WHERE username='" + Request["username"] + "';";
-                    //if (cmd.ExecuteReader() == null||true)
+                    SqlCommand cmd1 = conn.CreateCommand();
+                    cmd1.CommandText = "SELECT * FROM users WHERE username='" + Request["username"] + "';";
+                    SqlDataReader rdr=cmd1.ExecuteReader();
+                    string s=rdr["username"].ToString();
+                    if (s == "" || s == null)
                     {
-                        cmd.CommandText = "INSERT INTO users (username, password, city, age, status) VALUES ('" + Request["username"] + "', '" + Request["password"] + "', '" + Request["city"] + "', '" + int.Parse(Request["age"]) + "', '" + Request["status"] + "');";
-                        cmd.ExecuteNonQuery();
+                        rdr.Close();
+                        throw new Exception();
                     }
-                   // else
-                     //   Response.Write("<h1>this username is taken, try again</h1>");
-                    conn.Close();
-
+                    message+="<h1>this username is taken, try again</h1>";
                 }
+                catch(Exception exp)
+                {
+                    conn.Close(); conn.Open();
+                    SqlCommand cmd2 = conn.CreateCommand();
+                    cmd2.CommandText = "INSERT INTO users (username, password, city, age, status) VALUES ('"
+                        + Request["username"] + "', '"
+                        + Request["password"] + "', '"
+                        + Request["city"] + "', '"
+                        + int.Parse(Request["age"]) + "', '"
+                        + Request["status"] + "');"; 
+                    
+                    cmd2.ExecuteNonQuery();
+                }
+                conn.Close();
             }
         }
     }
 }
-/*
-    <script type="text/javascript">
-        function func() {
-            var ps1=signup["password"];
-            var ps2=signup["password2"];
-            if (ps1==ps2) {
-                alert("the passwords do not match");
-                return false;
-            }
-            else
-            return true;
-        }
-    </script>*/
