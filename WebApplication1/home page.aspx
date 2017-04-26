@@ -19,6 +19,9 @@
     </tr>
     </table>
     </div>
+        <p>
+            Hello <%=user %>, hope you will be impressed
+        </p>
     <div>
                 <%=MyList %>
     </div>

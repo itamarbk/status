@@ -21,7 +21,15 @@
     </div>
     <form id="form1" runat="server">
     <div>
-    
+        <p>
+            <%=message %>
+        </p>
+         <p>
+            username <input type="text" name="username" />
+        </p>
+        <p>
+            password <input type="text" name="password" />
+        </p>
     </div>
     </form>
 </body>

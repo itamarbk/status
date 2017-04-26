@@ -12,8 +12,13 @@ namespace WebApplication1
     public partial class home_page : System.Web.UI.Page
     {
         public string MyList = "";
+        public string user = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["current user"] == null)
+                user += "guest";
+            else
+                user += Session["current user"].ToString();
             SqlConnection conn = new SqlConnection(HELPER.connstring);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();

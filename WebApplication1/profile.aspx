@@ -19,10 +19,15 @@
     </tr>
     </table>
     </div>
-    <form id="form1" runat="server">
     <div>
-    
+        <form id="StatusUpdate" runat="server">
+            <p>
+            <%=UserData %>
+            <br/>
+                <%=StatusInput %>
+                <input type="submit" name ="submit" value="update" />
+            </p>
+        </form>
     </div>
-    </form>
 </body>
 </html>

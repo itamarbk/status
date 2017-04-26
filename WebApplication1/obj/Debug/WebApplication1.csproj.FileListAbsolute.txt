@@ -7,3 +7,8 @@ C:\Users\tbaic\Documents\GitHub\status\WebApplication1\bin\WebApplication1.pdb
 C:\Users\tbaic\Documents\GitHub\status\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\tbaic\Documents\GitHub\status\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Users\tbaic\Documents\GitHub\status\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\נילי\Documents\GitHub\status\WebApplication1\bin\WebApplication1.dll
+C:\Users\נילי\Documents\GitHub\status\WebApplication1\bin\WebApplication1.pdb
+C:\Users\נילי\Documents\GitHub\status\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\נילי\Documents\GitHub\status\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\נילי\Documents\GitHub\status\WebApplication1\obj\Debug\WebApplication1.pdb

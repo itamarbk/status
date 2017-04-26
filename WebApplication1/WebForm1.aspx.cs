@@ -44,11 +44,13 @@ namespace WebApplication1
                         + Request["password"] + "', '"
                         + Request["city"] + "', '"
                         + int.Parse(Request["age"]) + "', '"
-                        + Request["status"] + "');"; 
+                        + Request["status"] + "');";
                     
                     cmd2.ExecuteNonQuery();
                 }
                 conn.Close();
+                Session["current user"] = Request["username"];
+                Response.Redirect("home page.aspx");
             }
         }
     }
