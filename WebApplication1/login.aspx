@@ -30,6 +30,9 @@
         <p>
             password <input type="text" name="password" />
         </p>
+        <p>
+           <input type="submit"" name="submit" value="login" /> 
+        </p>
     </div>
     </form>
 </body>

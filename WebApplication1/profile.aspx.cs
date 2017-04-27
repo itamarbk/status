@@ -20,19 +20,17 @@ namespace WebApplication1
                 SqlConnection conn = new SqlConnection(HELPER.connstring);
                 conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM users" + Session["current user"] + ";";
+                cmd.CommandText = "SELECT * FROM users WHERE username='" + Session["current user"] + "';";
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
                     UserData += "<font size=\"4\" ><b>" + rdr["username"].ToString() + "</b></font>";
                     UserData += "<br/>age:" + rdr["age"];
                     UserData += "<br/>city:" + rdr["city"];
-                    UserData += "<br/><form id=\"StatusUpdate\" runat=\"server\">";
                     StatusInput += "status <input type=\"text\" name=\"status\" value=\"" + rdr["status"] + "\" />";
-                    UserData += "<input type=\"submit\" name =\"submit\" value=\"update\" /></form>";
                 }
                 conn.Close();
-                if (Requset["submit"] != null)
+                //if (Requset.StatusUpdate["submit"] != null)
                 {
 
                 }

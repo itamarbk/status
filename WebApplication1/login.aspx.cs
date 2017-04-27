@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace WebApplication1
 {
@@ -19,11 +20,13 @@ namespace WebApplication1
                 SqlConnection conn = new SqlConnection(HELPER.connstring);
                 conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM users WHERE username=" + Request["username"] + ";";
+                cmd.CommandText = "SELECT * FROM users WHERE username='" + Request["username"] + "';";
                 SqlDataReader rdr = cmd.ExecuteReader();
+
                 while (rdr.Read())
                 {
-                    if (rdr["password"].ToString() == Request["password"].ToString())
+                    Debug.WriteLine("'"+rdr["password"].ToString() + "'" + Request["password"]+"'");
+                    if (rdr["password"].ToString() == Request["password"])
                     {
                         Session["current user"] = Request["username"];
                         Response.Redirect("home page.aspx");
