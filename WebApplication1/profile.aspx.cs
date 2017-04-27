@@ -12,9 +12,9 @@ namespace WebApplication1
     public partial class profile : System.Web.UI.Page
     {
         public string UserData = "";
-        public string StatusInput = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            UserData = "";
             if (Session["current user"] != null)
             {
                 SqlConnection conn = new SqlConnection(HELPER.connstring);
@@ -24,15 +24,20 @@ namespace WebApplication1
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
+                    UserData += "<form id=\"StatusUpdate\" runat=\"server\"><p>";
                     UserData += "<font size=\"4\" ><b>" + rdr["username"].ToString() + "</b></font>";
                     UserData += "<br/>age:" + rdr["age"];
                     UserData += "<br/>city:" + rdr["city"];
-                    StatusInput += "status <input type=\"text\" name=\"status\" value=\"" + rdr["status"] + "\" />";
+                    UserData += "<br/>status <input type=\"text\" name=\"status\" value=\"" + rdr["status"] + "\" />";
+                    UserData += "<input type=\"submit\" name =\"submit\" value=\"update\" /></p></form>";
                 }
                 conn.Close();
-                //if (Requset.StatusUpdate["submit"] != null)
+                if (Request["submit"] != null)
                 {
-
+                    SqlConnection conn2 = new SqlConnection(HELPER.connstring);
+                    conn.Open();
+                    SqlCommand cmd2 = conn.CreateCommand();
+                    cmd.CommandText = "UPDATE password FROM users WHERE username='" + Session["current user"] + "' TO '"+Request["status"]+"';";
                 }
             }
             else

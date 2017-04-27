@@ -26,7 +26,7 @@ namespace WebApplication1
                 while (rdr.Read())
                 {
                     Debug.WriteLine("'"+rdr["password"].ToString() + "'" + Request["password"]+"'");
-                    if (rdr["password"].ToString() == Request["password"])
+                    if (rdr["password"].ToString().TrimEnd(' ') == Request["password"])
                     {
                         Session["current user"] = Request["username"];
                         Response.Redirect("home page.aspx");

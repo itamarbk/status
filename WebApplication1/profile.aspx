@@ -20,14 +20,7 @@
     </table>
     </div>
     <div>
-        <form id="StatusUpdate" runat="server">
-            <p>
             <%=UserData %>
-            <br/>
-                <%=StatusInput %>
-                <input type="submit" name ="submit" value="update" />
-            </p>
-        </form>
     </div>
 </body>
 </html>
