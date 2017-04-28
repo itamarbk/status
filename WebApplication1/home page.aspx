@@ -20,7 +20,7 @@
     </table>
     </div>
         <p>
-            Hello <%=user %>, hope you will be impressed
+            Hello <%=user %>, hope you will be impressed from the <%=Application["user count"] %> users
         </p>
     <div>
                 <%=MyList %>

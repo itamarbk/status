@@ -34,9 +34,9 @@
     </div>
     <form id="signup" runat="server" onsubmit="return func();">
     <div>
-    <p><%=message %></p>
+        <%=message %>
         <p>
-            username <input type="text" name="username" />
+            username <input type="text" name="username"/>
         </p>
         <p>
             password <input type="text" name="password" id="password" />

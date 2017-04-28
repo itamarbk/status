@@ -20,37 +20,50 @@ namespace WebApplication1
         {
             if (Request["submit"] != null)
             {
+                    bool user_empty = Request["username"].Length == 0;
+                    bool pswrd_empty = Request["password"].Length == 0;
+                    bool age_empty = Request["age"].Length == 0;
+                    bool city_empty = Request["city"].Length == 0;
+                    bool stts_empty = Request["status"].Length == 0;
                 SqlConnection conn = new SqlConnection(HELPER.connstring);
                 conn.Open();
-                try 
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM users WHERE username='" + Request["username"] + "';";
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.Read())
                 {
-                    SqlCommand cmd1 = conn.CreateCommand();
-                    cmd1.CommandText = "SELECT * FROM users WHERE username='" + Request["username"] + "';";
-                    SqlDataReader rdr=cmd1.ExecuteReader();
-                    string s=rdr["username"].ToString();
-                    if (s == "" || s == null)
-                    {
-                        rdr.Close();
-                        throw new Exception();
-                    }
-                    message+="<h1>this username is taken, try again</h1>";
+                    message += "<p><font size=\"4\" ><b>this username is taken, try again</b></font></p>";
+                    Response.Write("");
                 }
-                catch(Exception exp)
+                else if (Request["username"].Contains(" ") || Request["password"].Contains(" "))
+                {
+                    message += "<p><font size=\"4\" ><b>username and password must not contain spaces</b></font></p>";
+                    Response.Write("");
+                }
+                else if (user_empty||pswrd_empty||age_empty||city_empty||stts_empty)
+                {
+                    message += "<p><font size=\"4\" ><b>please do not leave any of the fields empty</b></font></p>";
+                    Response.Write("");
+                }
+                else
                 {
                     conn.Close(); conn.Open();
-                    SqlCommand cmd2 = conn.CreateCommand();
-                    cmd2.CommandText = "INSERT INTO users (username, password, city, age, status) VALUES ('"
+                    cmd.CommandText = "INSERT INTO users (username, password, city, age, status) VALUES ('"
                         + Request["username"] + "', '"
                         + Request["password"] + "', '"
                         + Request["city"] + "', '"
                         + int.Parse(Request["age"]) + "', '"
                         + Request["status"] + "');";
-                    
-                    cmd2.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                    Session["current user"] = Request["username"];
+                    if(Application["user count"]==null)
+                        Application["user count"]=0;
+                    else
+                        Application["user count"]=int.Parse(Application["user count"].ToString())+1;
+                    conn.Close();
+                    Response.Redirect("home page.aspx");
                 }
                 conn.Close();
-                Session["current user"] = Request["username"];
-                Response.Redirect("home page.aspx");
             }
         }
     }

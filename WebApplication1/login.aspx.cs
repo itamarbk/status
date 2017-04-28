@@ -15,6 +15,7 @@ namespace WebApplication1
         public string message = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool user_exists = false;
             if (Request["submit"] != null)
             {
                 SqlConnection conn = new SqlConnection(HELPER.connstring);
@@ -25,19 +26,26 @@ namespace WebApplication1
 
                 while (rdr.Read())
                 {
+                    user_exists = true;
                     Debug.WriteLine("'"+rdr["password"].ToString() + "'" + Request["password"]+"'");
                     if (rdr["password"].ToString().TrimEnd(' ') == Request["password"])
                     {
                         Session["current user"] = Request["username"];
+                        conn.Close();
                         Response.Redirect("home page.aspx");
                     }
-                    else
+                    else if (rdr["password"].ToString().Length!=0)
                     {
-                        message += "incorrect password, either try again or stop trying to hack " + Request["username"] + "'s user because this website does not have the resources to deal with hackers";
+                        message += "<p>incorrect password, either try again or stop trying to hack " + Request["username"] + "'s user because this website does not have the resources to deal with hackers</p>";
                         Response.Write("");
                     }
                 }
                 conn.Close();
+                if(!user_exists)
+                {
+                    message += "<p>incorrect username, please try again or <a href=\"WebForm1.aspx\">signup</a> if you do not have a user</p>";
+                    Response.Write("");
+                }
             }
         }
     }

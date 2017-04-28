@@ -58,6 +58,10 @@
     <Content Include="App_Data\Database2_log.ldf">
       <DependentUpon>Database2.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\Database3.mdf" />
+    <Content Include="App_Data\Database3_log.ldf">
+      <DependentUpon>Database3.mdf</DependentUpon>
+    </Content>
     <Content Include="home page.aspx" />
     <Content Include="login.aspx" />
     <Content Include="profile.aspx" />

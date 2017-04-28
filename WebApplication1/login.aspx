@@ -21,9 +21,7 @@
     </div>
     <form id="form1" runat="server">
     <div>
-        <p>
             <%=message %>
-        </p>
          <p>
             username <input type="text" name="username" />
         </p>
