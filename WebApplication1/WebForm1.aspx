@@ -29,6 +29,7 @@
         <td><a href="login.aspx">login</a></td>
         <td><a href="home page.aspx">home page</a></td>
         <td><a href="profile.aspx">profile</a></td>
+        <td><a href="logout.aspx">logout</a></td>
     </tr>
     </table>
     </div>
